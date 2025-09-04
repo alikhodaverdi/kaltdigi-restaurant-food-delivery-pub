@@ -8,11 +8,11 @@ const Navbar = () => {
   const user = false;
 
   return (
-    <div className="h-12 md:h-24 uppercase text-red-500 items-center p-4 flex justify-between border-b-2 border-b-red-500">
+    <div className="h-12 md:h-24 uppercase text-red-500 items-center p-4 flex justify-between border-b-2 border-b-red-500 lg:px-20 xl:px-40">
       {/* left links */}
       <div className="hidden flex-1 md:flex gap-4">
         <Link href={"/"}>خانه</Link>
-        <Link href={"/"}>منو</Link>
+        <Link href={"/menu"}>منو</Link>
         <Link href={"/"}>فرم تماس</Link>
       </div>
       {/* Logo */}

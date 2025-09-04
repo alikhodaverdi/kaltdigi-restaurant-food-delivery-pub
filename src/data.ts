@@ -134,3 +134,39 @@ export const feauredProduct: Products = [
     ],
   },
 ];
+
+type Menu = {
+  id: number;
+  slug: string;
+  title: string;
+  desc?: string;
+  img?: string;
+  color: string;
+}[];
+
+export const menue: Menu = [
+  {
+    id: 1,
+    slug: "pizza",
+    title: "پیتزا",
+    desc: "انواع پیتزاهای خوشمزه با مواد تازه و خمیر دست‌ساز.",
+    img: "/pizza.jpg",
+    color: "bg-red-500",
+  },
+  {
+    id: 2,
+    slug: "kebab",
+    title: "کباب",
+    desc: "کباب‌های اصیل ایرانی با برنج زعفرانی و مخلفات.",
+    img: "/kebab.jpg",
+    color: "bg-yellow-600",
+  },
+  {
+    id: 3,
+    slug: "drinks",
+    title: "نوشیدنی",
+    desc: "انواع نوشیدنی‌های سرد و گرم برای تکمیل لذت غذا.",
+    img: "/drinks.jpg",
+    color: "bg-blue-500",
+  },
+];
