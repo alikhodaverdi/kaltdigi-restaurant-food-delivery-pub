@@ -1,4 +1,4 @@
-import { menue } from "@/data";
+import { menue } from "@/components/data";
 import Link from "next/link";
 import React from "react";
 

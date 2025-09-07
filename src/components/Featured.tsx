@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-import { feauredProduct } from "@/data";
+import { feauredProduct } from "@/components/data";
 
 const Featured = () => {
   return (
