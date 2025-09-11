@@ -8,16 +8,18 @@ const Navbar = () => {
   const user = false;
 
   return (
-    <div className="h-12 md:h-24 uppercase text-red-500 items-center p-4 flex justify-between border-b-2 border-b-red-500 lg:px-20 xl:px-40">
+    <div className="h-12 text-[#FF0B55] p-4 flex items-center justify-between border-b-2 border-b-red-500 uppercase md:h-24 lg:px-20 xl:px-40">
       {/* left links */}
-      <div className="hidden flex-1 md:flex gap-4">
+      <div className="hidden  flex-1 md:flex gap-4">
         <Link href={"/"}>خانه</Link>
         <Link href={"/menu"}>منو</Link>
         <Link href={"/"}>فرم تماس</Link>
       </div>
       {/* Logo */}
       <div className=" text-xl md:font-bold flex-1 md:text-center">
-        <Link href={"/"}>اغذیه</Link>
+        <Link href={"/"} className="text-3xl">
+          رستوران میهمان
+        </Link>
       </div>
       {/* Mobile menu */}
       <div className="md:hidden">
@@ -27,12 +29,15 @@ const Navbar = () => {
       {/* right links */}
 
       <div className="hidden md:flex gap-4 items-center justify-end flex-1">
-        <div className="md:absolute lg:static flex top-3 r-2 items-center gap-2 cursor-pointer bg-orange-300 px-1 rounded-md">
+        <div className="md:absolute top-3 r-2 mt-2 lg:static flex items-center gap-2 cursor-pointer bg-orange-300 px-1 rounded-md ">
           <BiPhone />
-          <span>123645</span>
+          <span>123 456 789</span>
         </div>
-        <Link href={"/"}>ورود</Link>
-
+        {!user ? (
+          <Link href="/login">ورود</Link>
+        ) : (
+          <Link href="/orders">سفارش</Link>
+        )}
         <CartIcon />
       </div>
     </div>

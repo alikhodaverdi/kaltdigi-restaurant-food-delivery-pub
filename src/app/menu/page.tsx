@@ -22,7 +22,7 @@ const MenuPage = () => {
               {category.desc}
             </p>
             <button
-              className={`hidden 2xl:block bg-${category.color} bg-white text-red-500 py-2 px-4 rounded`}
+              className={`hidden 2xl:block bg-${category.color} bg-white text-[#FF0B55] py-2 px-4 rounded`}
             >
               نمایش
             </button>

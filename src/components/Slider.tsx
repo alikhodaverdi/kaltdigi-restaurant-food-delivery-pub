@@ -23,26 +23,30 @@ const data = [
 
 const Slider = () => {
   const [currentSlide, setcurrentSlide] = useState(0);
+  const [fade, setFade] = useState(true);
 
-  // useEffect(() => {
-  //   const interval = setInterval(
-  //     () =>
-  //       setcurrentSlide((prev) => (prev === data.length - 1 ? 0 : prev + 1)),
-  //     2000
-  //   );
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFade(false);
 
-  //   return () => clearInterval(interval);
-  // }, []);
+      setTimeout(() => {
+        setcurrentSlide((prev) => (prev === data.length - 1 ? 0 : prev + 1));
+        setFade(true);
+      }, 1000);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <div className="flex flex-col h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)] lg:flex-row bg-fuchsia-50">
+    <div className="flex font-yekan flex-col h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)] lg:flex-row bg-fuchsia-50">
       {/* text container */}
 
-      <div className="flex-1 flex items-center justify-center flex-col gap-8 text-red-500 font-bold ">
-        <h1 className="text-5xl text-center uppercase p-4 md:p-10 md:text-6xl xl:text-7xl">
+      <div className="flex-1 flex items-center justify-center flex-col gap-8 text-[#FF0B55] font-bold ">
+        <h1 className="text-5xl  text-center uppercase p-4 md:p-10 md:text-6xl xl:text-7xl">
           {data[currentSlide].title}
         </h1>
-        <button className="bg-red-500 uppercase   py-4 px-8 text-white">
+        <button className="bg-[#FF0B55] uppercase py-4 px-8 text-white">
           الان سفارش دهید
         </button>
       </div>
@@ -53,7 +57,10 @@ const Slider = () => {
           src={data[currentSlide].image}
           fill
           alt=""
-          className="object-cover"
+          priority
+          className={`object-cover absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+            fade ? "opacity-100" : "opacity-0"
+          }`}
         />
       </div>
     </div>

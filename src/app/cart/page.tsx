@@ -3,7 +3,7 @@ import React from "react";
 
 const CartPage = () => {
   return (
-    <div className="h-[calc(100vh-rem)] md:h-[calc(100vh-9rem)] flex flex-col text-red-500 lg:flex-row">
+    <div className="h-[calc(100vh-rem)] md:h-[calc(100vh-9rem)] flex flex-col text-[#FF0B55] lg:flex-row">
       {/* Products Container */}
       <div className="h-1/2 p-2 flex flex-col justify-center overflow-scroll lg:h-full lg:w-2/3 2xl:w-1/2 lg:px-20 xl:px-40 2xl:text-xl 2xl:gap-6">
         {/* single item container */}
@@ -60,7 +60,7 @@ const CartPage = () => {
           <span className="">$81.70</span>
         </div>
 
-        <button className="bg-red-500 text-white p-3 w-1/2  rounded-md self-end">
+        <button className="bg-[#FF0B55] text-white p-3 w-1/2  rounded-md self-end">
           پرداخت
         </button>
       </div>

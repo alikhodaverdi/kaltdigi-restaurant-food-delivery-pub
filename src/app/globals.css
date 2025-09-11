@@ -1,1 +1,24 @@
+/* app/globals.css */
+
+/* 1. The main Tailwind CSS import */
 @import "tailwindcss";
+
+/* 2. Your font-face declarations */
+@font-face {
+  font-family: "Yekan";
+  src: url("/fonts/Yekan.eot"); /* IE9 Compat Modes */
+  src: url("/fonts/Yekan.eot?#iefix") format("embedded-opentype"),
+    /* IE6-IE8 */ url("/fonts/Yekan.woff2") format("woff2"),
+    /* Modern Browsers */ url("/fonts/Yekan.woff") format("woff"),
+    /* Modern Browsers */ url("/fonts/Yekan.otf") format("opentype"),
+    /* Open Type Font */ url("/fonts/Yekan.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  text-rendering: optimizeLegibility;
+  font-display: auto;
+}
+
+/* 3. Your body or other custom styles */
+body {
+  font-family: Yekan, sans-serif;
+}

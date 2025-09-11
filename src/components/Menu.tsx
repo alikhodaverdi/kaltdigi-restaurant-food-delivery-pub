@@ -10,7 +10,7 @@ const Menu = () => {
   const user = false;
   const links = [
     { id: 1, title: "خانه", url: "/" },
-    { id: 2, title: "منو", url: "/" },
+    { id: 2, title: "منو", url: "/menu" },
     { id: 3, title: "ساعت کاری", url: "/" },
     { id: 4, title: "تماس با ما", url: "/" },
   ];
@@ -23,7 +23,7 @@ const Menu = () => {
       )}
 
       {open && (
-        <div className="bg-red-500 xl:px-40 lg:px-20 lx:px-40 w-full z-10 text-white text-3xl flex-col gap-8 absolute left-0 flex justify-center items-center top-24 h-[calc(100vh-6rem)]">
+        <div className="bg-[#FF0B55] xl:px-40 lg:px-20 lx:px-40 w-full z-10 text-white text-3xl flex-col gap-8 absolute left-0 flex justify-center items-center top-24 h-[calc(100vh-6rem)]">
           {links.map((item, index) => (
             <Link onClick={() => setOpen(false)} key={index} href={item.url}>
               {item.title}

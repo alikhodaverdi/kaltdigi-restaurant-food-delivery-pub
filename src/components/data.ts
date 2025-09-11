@@ -125,7 +125,7 @@ export const pizzas: Products = [
     id: 10,
     title: "پیتزا استیک",
     desc: "پیتزای لذیذ با تکه‌های استیک و سس مخصوص.",
-    img: "/pizza/10.jpg",
+    img: "/pizza/4.jpg",
     price: 45,
     options: [
       { title: "سایز کوچک", additionalPrice: 0 },
@@ -140,7 +140,7 @@ export const feauredProduct: Products = [
     id: 1,
     title: "پیتزا مارگاریتا",
     desc: "پیتزای کلاسیک با پنیر موزارلا و سس گوجه تازه.",
-    img: "/feature.jpg",
+    img: "/feauredproduct/1.jpg",
     price: 29.5,
     options: [
       { title: "سایز کوچک", additionalPrice: 0 },
@@ -152,7 +152,7 @@ export const feauredProduct: Products = [
     id: 2,
     title: "برگر مخصوص",
     desc: "برگر آبدار با پنیر چدار، کاهو و سس مخصوص.",
-    img: "/feature.jpg",
+    img: "/feauredproduct/2.jpg",
     price: 35,
     options: [
       { title: "سیب‌زمینی کوچک", additionalPrice: 5 },
@@ -164,7 +164,7 @@ export const feauredProduct: Products = [
     id: 3,
     title: "کباب کوبیده",
     desc: "دو سیخ کباب کوبیده با برنج ایرانی و گوجه کبابی.",
-    img: "/feature.jpg",
+    img: "/feauredproduct/4.jpg",
     price: 55,
     options: [
       { title: "ماست موسیر", additionalPrice: 8 },
@@ -176,7 +176,7 @@ export const feauredProduct: Products = [
     id: 4,
     title: "سالاد سزار",
     desc: "سالاد سزار با مرغ گریل و سس مخصوص سزار.",
-    img: "/feature.jpg",
+    img: "/feauredproduct/5.jpg",
     price: 32,
     options: [
       { title: "بدون مرغ", additionalPrice: -5 },
@@ -188,7 +188,7 @@ export const feauredProduct: Products = [
     id: 5,
     title: "سوپ جو",
     desc: "سوپ جو خوشمزه و سبک به همراه سبزیجات تازه.",
-    img: "/feature.jpg",
+    img: "/feauredproduct/6.jpg",
     price: 20,
     options: [
       { title: "نان بربری", additionalPrice: 5 },
@@ -200,7 +200,7 @@ export const feauredProduct: Products = [
     id: 6,
     title: "چلو مرغ",
     desc: "ران مرغ با زعفران و برنج ایرانی.",
-    img: "/feature.jpg",
+    img: "/feauredproduct/7.jpg",
     price: 48,
     options: [
       { title: "ران مرغ", additionalPrice: 0 },
@@ -212,7 +212,7 @@ export const feauredProduct: Products = [
     id: 7,
     title: "لازانیا",
     desc: "لازانیای خانگی با سس بشامل و گوشت چرخ‌کرده.",
-    img: "/feature.jpg",
+    img: "/feauredproduct/8.jpg",
     price: 45,
     options: [
       { title: "سس بیشتر", additionalPrice: 5 },
@@ -224,7 +224,7 @@ export const feauredProduct: Products = [
     id: 8,
     title: "فلافل",
     desc: "ساندویچ فلافل با نان داغ و ترشی تازه.",
-    img: "/feature.jpg",
+    img: "/feauredproduct/9.jpg",
     price: 18,
     options: [
       { title: "سس تند", additionalPrice: 2 },
@@ -236,7 +236,7 @@ export const feauredProduct: Products = [
     id: 9,
     title: "جوجه کباب",
     desc: "سیخ جوجه کباب زعفرانی با برنج ایرانی.",
-    img: "/feature.jpg",
+    img: "/feauredproduct/10.jpg",
     price: 52,
     options: [
       { title: "سالاد فصل", additionalPrice: 8 },
@@ -248,7 +248,7 @@ export const feauredProduct: Products = [
     id: 10,
     title: "دسر تیرامیسو",
     desc: "دسر ایتالیایی خوشمزه با قهوه و خامه.",
-    img: "/feature.jpg",
+    img: "/feauredproduct/11.jpg",
     price: 25,
     options: [
       { title: "پودر کاکائو بیشتر", additionalPrice: 2 },
@@ -274,7 +274,7 @@ export const menue: Menu = [
     title: "پیتزا",
     desc: "انواع پیتزاهای خوشمزه با مواد تازه و خمیر دست‌ساز.",
     img: "/pizza.jpg",
-    color: "bg-red-500",
+    color: "bg-[#FF0B55]",
   },
   {
     id: 2,

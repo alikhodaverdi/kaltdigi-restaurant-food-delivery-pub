@@ -60,7 +60,7 @@ const Price = ({ price, id, options }: Props) => {
         </div>
         {/* Cart button */}
 
-        <button className="uppercase bg-red-500 md:w-64 w-60 text-white p-3 ring-1 ring-red-500">
+        <button className="uppercase bg-[#FF0B55] md:w-64 w-60 text-white p-3 ring-1 ring-red-500">
           افزودن به سبد کارت
         </button>
       </div>
