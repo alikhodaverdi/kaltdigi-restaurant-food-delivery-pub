@@ -1,16 +1,31 @@
+import { ProductType } from "@/types/types";
 import Image from "next/image";
 import React from "react";
 
-import { feauredProduct } from "@/components/data";
+// import { feauredProduct } from "@/components/data";
 
-const Featured = () => {
+const getData = async () => {
+  const res = await fetch("http://localhost:3000/api/product", {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed!");
+  }
+
+  return res.json();
+};
+
+const Featured = async () => {
+  const featuredProducts: ProductType[] = await getData();
+
   return (
     <div className="w-screen overflow-x-scroll text-[#FF0B55]">
       {/* rapper */}
       <div className=" w-max flex">
         {/* single item */}
 
-        {feauredProduct.map((item, index) => (
+        {featuredProducts.map((item, index) => (
           <div
             key={index}
             className=" w-screen h-[60vh] group flex flex-col p-4 items-center hover:cursor-pointer justify-around hover:bg-fuchsia-50 transition-all duration-300 md:w-[50vw xl:w-[33vh] xl:h-[90vh]"
