@@ -46,6 +46,8 @@ model Order {
   products  Json[]
   status    String
   intent_id String?  @unique
+  user      User     @relation(fields: [userEmail], references: [email])
+  userEmail String
 }
 
 model Account {
@@ -78,6 +80,8 @@ model Session {
 model User {
   id            String    @id @default(cuid())
   name          String?
+  password      String?
+  username      String?
   email         String?   @unique
   emailVerified DateTime?
   image         String?
@@ -86,6 +90,7 @@ model User {
   updatedAt     DateTime  @updatedAt
   accounts      Account[]
   sessions      Session[]
+  orders        Order[]
 }
 
 model VerificationRequest {

@@ -4,6 +4,7 @@ import Notification from "@/components/Notification";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AuthProvider from "@/components/AuthProvider";
+import QueryProvider from "@/components/QueryProvider";
 
 export const metadata: Metadata = {
   title: "kaltdigi-restaurant-food",
@@ -18,12 +19,14 @@ export default function RootLayout({
   return (
     <html lang="fa" dir="rtl">
       <AuthProvider>
-        <body className={` antialiased`}>
-          <Notification />
-          <Navbar />
-          {children}
-          <Footer />
-        </body>
+        <QueryProvider>
+          <body className={` antialiased`}>
+            <Notification />
+            <Navbar />
+            {children}
+            <Footer />
+          </body>
+        </QueryProvider>
       </AuthProvider>
     </html>
   );
