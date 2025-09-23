@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
+import { TbTrash } from "react-icons/tb";
 
 const OrdersPage = () => {
   const { data: session, status } = useSession();
@@ -29,6 +30,7 @@ const OrdersPage = () => {
     return "Loading ...";
   }
 
+  const handleUpdate = (e, id) => {};
   return (
     <div className="p-4 lg:px-20 xl:px-40">
       <table className="w-full border-separate border-spacing-3">
@@ -44,11 +46,30 @@ const OrdersPage = () => {
         <tbody>
           {data?.map((item: OrderType) => (
             <tr className="text-sm md:text-base  bg-red-50">
-              <td className="hidden md:block py-6 px-1">12334565</td>
-              <td className="py-6 px-1">1405.05.05</td>
-              <td className="py-6 px-1">12.50</td>
+              <td className="hidden md:block py-6 px-1">
+                {item.createdAt.toString().slice(0, 10)}
+              </td>
+              <td className="py-6 px-1">{item.price}</td>
+              <td className="py-6 px-1">{item.products[0].title}</td>
               <td className="hidden md:block py-6 px-1">پیتزا مارگاریتا</td>
-              <td>در حال ارسال</td>
+              {session?.user?.isAdmin ? (
+                <td>
+                  <form
+                    className="flex items-center justify-center gap-4"
+                    onSubmit={(e) => handleUpdate(e, item.id)}
+                  >
+                    <input
+                      placeholder={item.status}
+                      className="p-2 ring-1 ring-red-100 rounded-md"
+                    ></input>
+                    <button>
+                      <TbTrash />
+                    </button>
+                  </form>
+                </td>
+              ) : (
+                <td>{item.status}</td>
+              )}
             </tr>
           ))}
         </tbody>
