@@ -1,11 +1,12 @@
 "use client";
 
 import { OrderType } from "@/types/types";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import { TbTrash } from "react-icons/tb";
+import { toast } from "react-toastify";
 
 const OrdersPage = () => {
   const { data: session, status } = useSession();
@@ -26,11 +27,37 @@ const OrdersPage = () => {
     },
   });
 
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: ({ id, status }: { id: string; status: string }) => {
+      return fetch(`http://localhost:3000/api/orders/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(status),
+      });
+    },
+    onSuccess() {
+      queryClient.invalidateQueries({ queryKey: ["orders"] });
+    },
+  });
+
   if (isLoading || status === "loading") {
     return "Loading ...";
   }
 
-  const handleUpdate = (e, id) => {};
+  const handleUpdate = (e: React.FormEvent<HTMLFormElement>, id: string) => {
+    e.preventDefault();
+
+    const form = e.target as HTMLFormElement;
+    const input = form.elements[0] as HTMLInputElement;
+    const status = input.value;
+
+    mutation.mutate({ id, status });
+    toast.success("وضعیت سفارش تغییر کرد!");
+  };
   return (
     <div className="p-4 lg:px-20 xl:px-40">
       <table className="w-full border-separate border-spacing-3">
@@ -45,7 +72,11 @@ const OrdersPage = () => {
         </thead>
         <tbody>
           {data?.map((item: OrderType) => (
-            <tr className="text-sm md:text-base  bg-red-50">
+            <tr
+              className={`text-sm md:text-base  bg-red-50 ${
+                item.status !== "delivered" && "bg-red-50"
+              }`}
+            >
               <td className="hidden md:block py-6 px-1">
                 {item.createdAt.toString().slice(0, 10)}
               </td>
@@ -56,7 +87,7 @@ const OrdersPage = () => {
                 <td>
                   <form
                     className="flex items-center justify-center gap-4"
-                    onSubmit={(e) => handleUpdate(e, item.id)}
+                    onSubmit={(e) => handleUpdate(e, String(item.id))}
                   >
                     <input
                       placeholder={item.status}

@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AuthProvider from "@/components/AuthProvider";
 import QueryProvider from "@/components/QueryProvider";
+import { ToastContainer } from "react-toastify";
 
 export const metadata: Metadata = {
   title: "kaltdigi-restaurant-food",
@@ -25,6 +26,11 @@ export default function RootLayout({
             <Navbar />
             {children}
             <Footer />
+            <ToastContainer
+              position="bottom-right"
+              theme="dark"
+              autoClose={3000}
+            />
           </body>
         </QueryProvider>
       </AuthProvider>

@@ -1,5 +1,6 @@
 import { ProductType } from "@/types/types";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 // import { feauredProduct } from "@/components/data";
@@ -26,7 +27,8 @@ const Featured = async () => {
         {/* single item */}
 
         {featuredProducts.map((item, index) => (
-          <div
+          <Link
+            href={`/product/${item.id}`}
             key={index}
             className=" w-screen h-[60vh] group flex flex-col p-4 items-center hover:cursor-pointer justify-around hover:bg-fuchsia-50 transition-all duration-300 md:w-[50vw xl:w-[33vh] xl:h-[90vh]"
           >
@@ -52,7 +54,7 @@ const Featured = async () => {
                 اضافه کردن به سبد
               </button>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
