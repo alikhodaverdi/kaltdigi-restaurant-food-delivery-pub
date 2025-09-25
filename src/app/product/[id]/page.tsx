@@ -1,4 +1,3 @@
-import { singleProduct } from "@/components/data";
 import Price from "@/components/Price";
 import { ProductType } from "@/types/types";
 import Image from "next/image";
@@ -15,6 +14,7 @@ const getData = async (id: string) => {
 
   return res.json();
 };
+
 const SingleProductPage = async ({ params }: { params: { id: string } }) => {
   const singleProduct: ProductType = await getData(params.id);
   return (
@@ -22,7 +22,12 @@ const SingleProductPage = async ({ params }: { params: { id: string } }) => {
       {/* image container */}
       {singleProduct?.img && (
         <div className="relative  w-full h-1/2  md:h-[70%]">
-          <Image src={"/pizza/2.jpg"} alt="" className="object-contain" fill />
+          <Image
+            src={singleProduct.img}
+            alt={singleProduct.title}
+            className="object-contain"
+            fill
+          />
         </div>
       )}
       {/* text container */}
@@ -32,11 +37,7 @@ const SingleProductPage = async ({ params }: { params: { id: string } }) => {
         </h1>
         <p>{singleProduct.price}</p>
 
-        {/* <Price
-          price={singleProduct.price}
-          id={singleProduct.id}
-          options={singleProduct.options}
-        /> */}
+        <Price product={singleProduct} />
       </div>
 
       <div></div>

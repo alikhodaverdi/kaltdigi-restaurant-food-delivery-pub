@@ -15,13 +15,11 @@ export const GET = async (
       },
     });
 
-    return new NextResponse(JSON.stringify(JSON.stringify(product)), {
-      status: 200,
-    });
-  } catch (error) {
-    console.log(error);
+    return new NextResponse(JSON.stringify(product), { status: 200 });
+  } catch (err) {
+    console.log(err);
     return new NextResponse(
-      JSON.stringify({ message: "Something wen wrong!" }),
+      JSON.stringify({ message: "Something went wrong!" }),
       { status: 500 }
     );
   }
