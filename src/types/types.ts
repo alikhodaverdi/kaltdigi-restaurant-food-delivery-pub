@@ -27,11 +27,21 @@ export type OrderType = {
 };
 
 export type CartItemType = {
-  id: number;
+  id: string;
   title: string;
   img?: string;
   price: number;
-  status: string;
   optionTitle?: string;
   quantity: number;
+};
+
+export type CartType = {
+  products: CartItemType[];
+  totalItems: number;
+  totalPrice: number;
+};
+
+export type ActionTypes = {
+  addtoCart: (item: CartItemType) => void;
+  removeFromCart: (item: CartItemType) => void;
 };
