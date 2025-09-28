@@ -15,7 +15,7 @@ export const useCartStore = create(
       totalItems: INITIAL_STATE.totalItems,
       totalPrice: INITIAL_STATE.totalPrice,
       addtoCart(item) {
-        const product = get().products;
+        const products = get().products;
         const productInState = products.find(
           (product) => product.id === item.id
         );
@@ -29,6 +29,12 @@ export const useCartStore = create(
                 }
               : item
           );
+
+          set((state) => ({
+            products: updatedProducts,
+            totalItems: state.totalItems + item.quantity,
+            totalPrice: state.totalPrice + item.price,
+          }));
         } else {
           set((state) => ({
             products: [...state.products, item],

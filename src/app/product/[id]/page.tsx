@@ -1,3 +1,4 @@
+import DeleteButton from "@/components/DeleteButton";
 import Price from "@/components/Price";
 import { ProductType } from "@/types/types";
 import Image from "next/image";
@@ -18,7 +19,7 @@ const getData = async (id: string) => {
 const SingleProductPage = async ({ params }: { params: { id: string } }) => {
   const singleProduct: ProductType = await getData(params.id);
   return (
-    <div className=" p-4 lg:px-4 xl:px-40 h-screen flex flex-col justify-around text-[#FF0B55] md:flex-row md:gap-5 md:items-center">
+    <div className="relative p-4 lg:px-4 xl:px-40 h-screen flex flex-col justify-around text-[#FF0B55] md:flex-row md:gap-5 md:items-center">
       {/* image container */}
       {singleProduct?.img && (
         <div className="relative  w-full h-1/2  md:h-[70%]">
@@ -39,6 +40,8 @@ const SingleProductPage = async ({ params }: { params: { id: string } }) => {
 
         <Price product={singleProduct} />
       </div>
+
+      <DeleteButton id={singleProduct.id} />
 
       <div></div>
     </div>
