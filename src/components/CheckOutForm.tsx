@@ -1,5 +1,6 @@
 import { useCheckout, PaymentElement } from "@stripe/react-stripe-js/checkout";
 import React from "react";
+import AddressForm from "./AddressForm";
 
 const CheckoutForm = () => {
   const checkoutState = useCheckout();
@@ -30,6 +31,7 @@ const CheckoutForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <PaymentElement />
+      <AddressForm />
       <button>Submit</button>
     </form>
   );
