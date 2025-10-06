@@ -1,21 +1,15 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
   output   = "../src/generated/prisma"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 model Category {
-  id        String    @id @default(cuid())
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
   createdAt DateTime  @default(now())
   title     String
   desc      String
@@ -26,12 +20,12 @@ model Category {
 }
 
 model Product {
-  id         String   @id @default(cuid())
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
   createdAt  DateTime @default(now())
   title      String
   desc       String
   img        String?
-  price      Decimal
+  price      Float
   isFeatured Boolean  @default(false)
   options    Json[]
 
@@ -40,9 +34,9 @@ model Product {
 }
 
 model Order {
-  id        String   @id @default(cuid())
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   createdAt DateTime @default(now())
-  price     Decimal
+  price     Float
   products  Json[]
   status    String
   intent_id String?  @unique
@@ -51,8 +45,8 @@ model Order {
 }
 
 model Account {
-  id                 String    @id @default(cuid())
-  userId             String
+  id                 String    @id @default(auto()) @map("_id") @db.ObjectId
+  userId             String    @db.ObjectId
   providerType       String
   providerId         String
   providerAccountId  String
@@ -67,8 +61,8 @@ model Account {
 }
 
 model Session {
-  id           String   @id @default(cuid())
-  userId       String
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId       String   @db.ObjectId
   expires      DateTime
   sessionToken String   @unique
   accessToken  String   @unique
@@ -78,7 +72,7 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
   name          String?
   password      String?
   username      String?
@@ -94,7 +88,7 @@ model User {
 }
 
 model VerificationRequest {
-  id         String   @id @default(cuid())
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
   identifier String
   token      String   @unique
   expires    DateTime
