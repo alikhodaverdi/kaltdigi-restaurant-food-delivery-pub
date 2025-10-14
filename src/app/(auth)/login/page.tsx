@@ -3,7 +3,7 @@ import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiFillFacebook, AiFillGoogleCircle } from "react-icons/ai";
 import { toast } from "react-toastify";
 
@@ -18,11 +18,11 @@ const LoginPage = () => {
 
   if (status === "loading") return <p>Loading...</p>;
 
-  if (status === "authenticated") {
-    router.push("/");
-    return null;
-  }
-
+  useEffect(() => {
+    if (status === "authenticated") {
+      router.push("/");
+    }
+  }, [status, router]);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };

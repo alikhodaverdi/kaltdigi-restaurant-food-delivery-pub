@@ -2,22 +2,23 @@
 
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
-import React from "react";
 
 const UserLinks = () => {
-  const { data, stauts } = useSession();
+  const { status } = useSession();
 
   return (
-    <>
-      {status === "authenticated" ? (
-        <div>
-          <Link href="/login">ورود</Link>
-          <span onClick={() => signOut()}>Logout</span>
-        </div>
+    <div>
+      {status === "unauthenticated" ? (
+        <Link href="/login">ورود</Link>
       ) : (
-        <Link href="/orders">سفارش</Link>
+        <div>
+          <Link href="/orders">سفارش ها</Link>
+          <span className="mr-4 cursor-pointer" onClick={() => signOut()}>
+            خروج
+          </span>
+        </div>
       )}
-    </>
+    </div>
   );
 };
 
