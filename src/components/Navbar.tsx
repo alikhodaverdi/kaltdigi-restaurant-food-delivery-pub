@@ -29,7 +29,6 @@ const Navbar = () => {
 
       <div className="hidden md:flex gap-4 items-center justify-end flex-1">
         <UserLinks />
-
         <CartIcon />
       </div>
     </div>
