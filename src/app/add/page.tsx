@@ -40,9 +40,9 @@ const AddPage = () => {
     return <p>Loading ...</p>;
   }
 
-  //   if (status === "unauthenticated" || !session?.user.isAdmin) {
-  //     router.push("/");
-  //   }
+  if (status === "unauthenticated" || !session?.user.isAdmin) {
+    router.push("/");
+  }
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -90,22 +90,17 @@ const AddPage = () => {
     e.preventDefault();
 
     try {
-      // const url = await upload();
+      const url = await upload();
 
       const res = await fetch("http://localhost:3000/api/product", {
         method: "POST",
-        // body: JSON.stringify({
-        //   // img: url,
-        //   ...inputs,
-        //   options,
-        // }),
         body: JSON.stringify({
           title: inputs.title,
           desc: inputs.desc,
+          img: url,
           price: Number(inputs.price),
           catSlug: inputs.catSlug,
           options: options,
-          img: "/placeholder.jpg",
         }),
       });
 
@@ -139,7 +134,6 @@ const AddPage = () => {
           />
         </div>
 
-        {/* عنوان */}
         <div className="mb-5">
           <label className="block text-gray-700 mb-2">عنوان</label>
           <input
@@ -151,7 +145,6 @@ const AddPage = () => {
           />
         </div>
 
-        {/* توضیحات */}
         <div className="mb-5">
           <label className="block text-gray-700 mb-2">توضیحات</label>
           <textarea
@@ -163,7 +156,6 @@ const AddPage = () => {
           />
         </div>
 
-        {/* قیمت */}
         <div className="mb-5">
           <label className="block text-gray-700 mb-2">قیمت (تومان)</label>
           <input
@@ -175,7 +167,6 @@ const AddPage = () => {
           />
         </div>
 
-        {/* دسته‌بندی */}
         <div className="mb-5">
           <label className="block text-gray-700 mb-2">دسته‌بندی</label>
           <input
@@ -187,7 +178,6 @@ const AddPage = () => {
           />
         </div>
 
-        {/* تنظیمات بیشتر */}
         <div className="mb-6">
           <label className="block text-gray-700 mb-3">تنظیمات بیشتر</label>
           <div className="flex gap-3 mb-3">
@@ -215,7 +205,6 @@ const AddPage = () => {
           </button>
         </div>
 
-        {/* نمایش تنظیمات اضافه‌شده */}
         <div className="mb-6">
           {options.length > 0 && (
             <div className="space-y-2">
@@ -241,7 +230,6 @@ const AddPage = () => {
           )}
         </div>
 
-        {/* دکمه ارسال */}
         <button
           type="submit"
           className="w-full bg-green-600 text-white font-semibold py-3 rounded-lg hover:bg-green-700 transition-all"

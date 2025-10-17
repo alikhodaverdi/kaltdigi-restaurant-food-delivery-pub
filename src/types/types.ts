@@ -1,6 +1,6 @@
 export type MenuType = {
   id: number;
-  catSlug: string;
+  slug: string;
   title: string;
   desc?: string;
   img?: string;
